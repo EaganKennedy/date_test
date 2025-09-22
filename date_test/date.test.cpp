@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "gtest/gtest.h"
 #include "date.hpp"
 #include <string>
@@ -49,8 +50,6 @@ TEST(Props, CorrectMonthRead) {
 
 	d.month(11);
 	ASSERT_EQ(d.monthName(), "November");
-
-	// test Feb, Aug, Nov, Sun, Wed, Fri
 }
 
 TEST(Props, CorrectDayRead) {
@@ -72,7 +71,6 @@ TEST(Print, AccuratePrint) {
 
 	ASSERT_EQ(sout, "10/25/2025");
 }
-
 
 TEST(Advance, BasicAdvance) {
 	Date d;
@@ -116,7 +114,6 @@ TEST(Advance, Separator) {
 	d.print(sout);
 	ASSERT_EQ(sout, "5+2+1970");
 }
-
 
 TEST(Now, WorkingStatic) {
 	std::string testCase = "";

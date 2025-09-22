@@ -41,16 +41,9 @@ namespace util {
 		static Order order; // Order::MonthDayYear
 		static std::string separator; // '/'
 
-
-
 	private:
 
-		int formatDay(); //Exists for convention, doesn't do anything
-		int formatMonth(); // add 1
-		int formatYear(); // add 1900
-
-
-		time_t cTime;
+		time_t cTime = 0;
 		tm oTime;
 	};
 }

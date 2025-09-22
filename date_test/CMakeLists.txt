@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (date_test date_test.cpp)
+add_executable (date_test "date.test.cpp")
 target_link_libraries(date_test "gtest" "gtest_main" "date")
 
 
