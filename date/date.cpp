@@ -13,7 +13,7 @@ namespace util {
 	Date::Date(int d, int m, int y) {		
 		oTime.tm_year = y - 1900;
 		oTime.tm_mon = m - 1;
-		oTime.tm_mday;
+		oTime.tm_mday = d;
 
 		cTime = mktime(&oTime);
 	}
@@ -24,7 +24,7 @@ namespace util {
 	}
 
 	int Date::day() {
-
+		return 1;
 	}
 
 	void Date::month(int m) {
@@ -32,7 +32,7 @@ namespace util {
 	}
 
 	int Date::month() {
-
+		return 1;
 	}
 
 	void Date::year(int y) {
@@ -40,15 +40,15 @@ namespace util {
 	}
 
 	int Date::year() {
-
+		return 1;
 	}
 
 	string Date::dayName() {
-
+		return "";
 	}
 
 	string Date::monthName() {
-
+		return "";
 	}
 
 	void Date::advance(int move = 1) {
