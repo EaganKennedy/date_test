@@ -51,7 +51,7 @@ namespace util {
 		return "";
 	}
 
-	void Date::advance(int move = 1) {
+	void Date::advance(int move) {
 
 	}
 
@@ -59,5 +59,6 @@ namespace util {
 
 	}
 
-
+	Date::Order Date::order = Date::Order::MonthDayYear;
+	string Date::separator = "/";
 }
