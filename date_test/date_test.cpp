@@ -37,8 +37,28 @@ TEST(ValueCtor, InitWorks) {
 	ASSERT_EQ(d.year(), 1971);
 }
 
-TEST(Props, CorrectRead) {
+TEST(Props, CorrectMonthRead) {
+	Date d(1,2,1970);
+	ASSERT_EQ(d.monthName(), "February");
+
+	d.month(8);
+	ASSERT_EQ(d.monthName(), "August");
+
+	d.month(11);
+	ASSERT_EQ(d.monthName(), "November");
+
 	// test Feb, Aug, Nov, Sun, Wed, Fri
+}
+
+TEST(Props, CorrectDayRead) {
+	Date d(21, 9, 2025);
+	ASSERT_EQ(d.dayName(), "Sunday");
+
+	Date d2(24, 9, 2025);
+	ASSERT_EQ(d.dayName(), "Wednesday");
+
+	Date d3(26, 9, 2025);
+	ASSERT_EQ(d.dayName(), "Friday");
 }
 
 TEST(Print, Prints) {
