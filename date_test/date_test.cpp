@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "date.hpp"
+#include <string>
+#include <sstream>
 
 using namespace util;
 
@@ -61,8 +63,13 @@ TEST(Props, CorrectDayRead) {
 	ASSERT_EQ(d.dayName(), "Friday");
 }
 
-TEST(Print, Prints) {
-	// Prints
+TEST(Print, AccuratePrint) {
+	std::ostringstream sout;
+	Date d(25,10,2025);
+
+	d.print(sout);
+
+	ASSERT_EQ(sout, "10/25/2025");
 }
 
 
