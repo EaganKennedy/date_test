@@ -59,6 +59,12 @@ namespace util {
 
 	}
 
+	 Date Date::now() {
+		 //temp
+		 Date d;
+		 return d;
+	}
+
 	Date::Order Date::order = Date::Order::MonthDayYear;
 	string Date::separator = "/";
 }

@@ -115,25 +115,26 @@ TEST(Advance, Separator) {
 	ASSERT_EQ(sout.str(), "5+2+1970");
 }
 
-//TEST(Now, WorkingStatic) {
-//	std::string testCase = "";
-//	std::ostringstream sout;
-//	tm testToday;
-//
-//	Date::order = Date::Order::MonthDayYear;
-//	Date today = Date::now();
-//
-//	testToday = *localtime(nullptr);
-//
-//	testCase += std::to_string(testToday.tm_mon++);
-//	testCase += Date::separator;
-//	
-//	testCase += std::to_string(testToday.tm_mday);
-//	testCase += Date::separator;
-//
-//	testCase += std::to_string(testToday.tm_year);
-//
-//	today.print(sout);
-//
-//	ASSERT_EQ(sout.str(), testCase);
-//}
+TEST(Now, WorkingStatic) {
+	std::string testCase = "";
+	std::ostringstream sout;
+	tm testToday;
+
+	Date::order = Date::Order::MonthDayYear;
+	Date today = Date::now();
+
+	time_t temp = time(nullptr);
+	testToday = *localtime(&temp);
+
+	testCase += std::to_string(testToday.tm_mon + 1);
+	testCase += Date::separator;
+	
+	testCase += std::to_string(testToday.tm_mday);
+	testCase += Date::separator;
+
+	testCase += std::to_string(testToday.tm_year + 1900);
+
+	today.print(sout);
+
+	ASSERT_EQ(sout.str(), testCase);
+}
