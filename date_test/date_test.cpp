@@ -2,6 +2,7 @@
 #include "date.hpp"
 #include <string>
 #include <sstream>
+#include <ctime>
 
 using namespace util;
 
@@ -118,5 +119,24 @@ TEST(Advance, Separator) {
 
 
 TEST(Now, WorkingStatic) {
+	std::string testCase = "";
+	std::ostringstream sout;
+	tm testToday;
+
+	Date::order = Date::Order::MonthDayYear;
 	Date today = Date::now();
+
+	testToday = *localtime(nullptr);
+
+	testCase += std::to_string(testToday.tm_mon++);
+	testCase += Date::separator;
+	
+	testCase += std::to_string(testToday.tm_mday);
+	testCase += Date::separator;
+
+	testCase += std::to_string(testToday.tm_year);
+
+	today.print(sout);
+
+	ASSERT_EQ(sout, testCase);
 }
