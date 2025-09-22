@@ -3,6 +3,6 @@
 #
 
 # Add source to this project's executable.
-add_library (static date.cpp date.hpp)
+add_executable (date_test  )
 
 # TODO: Add tests and install targets if needed.
