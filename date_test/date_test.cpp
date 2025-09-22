@@ -87,11 +87,33 @@ TEST(Advance, BasicAdvance) {
 }
 
 TEST(Advance, DateOrder) {
-	// Date works in each order ad changes across multiple
+	Date d(5,2,1970);
+	std::ostringstream sout;
+
+	d.print(sout);
+	ASSERT_EQ(sout, "2/5/1970");
+
+	Date::order = Date::Order::DayMonthYear;
+	d.print(sout);
+	ASSERT_EQ(sout, "5/2/1970");
+
+	Date::order = Date::Order::YearMonthDay;
+	d.print(sout);
+	ASSERT_EQ(sout, "1970/2/5");
 }
 
 TEST(Advance, Separator) {
-	// Separator influences all
+	Date d(5,2,1970);
+	std::ostringstream sout;
+
+	Date::separator = "+";
+
+	d.print(sout);
+	ASSERT_EQ(sout, "2+5+1970");
+
+	Date d2(2, 5, 1970);
+	d.print(sout);
+	ASSERT_EQ(sout, "5+2+1970");
 }
 
 
