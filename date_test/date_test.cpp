@@ -4,15 +4,37 @@
 using namespace util;
 
 TEST(DefaultCtor, InitAndBaseGetter) {
-	// test constructor = 1/1/1970 MM/DD/YY using getters
+	Date d;
+	ASSERT_EQ(d.month(), 1);
+	ASSERT_EQ(d.day(), 1);
+	ASSERT_EQ(d.year(), 1970);
 }
 
-TEST(Setters, SettingAndGetting) {
-	// test setting with the same three dates
+TEST(Setters, Setting) {
+	Date d;
+	ASSERT_NO_THROW(d.month(10));
+	ASSERT_THROW(d.month(20), Date::Invalid);
+
+	ASSERT_NO_THROW(d.day(25));
+	ASSERT_THROW(d.day(32), Date::Invalid);
+
+	ASSERT_NO_THROW(d.year(2000));
+}
+
+TEST(Setters, Getting) {
+	Date d;
+
+	ASSERT_EQ(d.month(), 1);
+	ASSERT_EQ(d.day(), 1);
+	ASSERT_EQ(d.year(), 1970);
 }
 
 TEST(ValueCtor, InitWorks) {
-	// test using three dates, one on the low, mid and high ends
+	Date d(2, 2, 1971);
+
+	ASSERT_EQ(d.month(), 2);
+	ASSERT_EQ(d.day(), 2);
+	ASSERT_EQ(d.year(), 1971);
 }
 
 TEST(Props, CorrectRead) {
@@ -32,8 +54,8 @@ TEST(Advance, DateOrder) {
 	// Date works in each order ad changes across multiple
 }
 
-TEST(Advance, Seperator) {
-	// Seperator influences all
+TEST(Advance, Separator) {
+	// Separator influences all
 }
 
 
