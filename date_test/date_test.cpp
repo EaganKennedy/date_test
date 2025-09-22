@@ -74,7 +74,16 @@ TEST(Print, AccuratePrint) {
 
 
 TEST(Advance, BasicAdvance) {
-	// no input, five input, negative
+	Date d;
+
+	d.advance();
+	ASSERT_EQ(d.day(), 2);
+
+	d.advance(5);
+	ASSERT_EQ(d.day(), 7);
+	
+	d.advance(-6);
+	ASSERT_EQ(d.day(), 1);
 }
 
 TEST(Advance, DateOrder) {
