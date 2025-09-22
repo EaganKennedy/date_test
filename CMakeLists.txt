@@ -13,3 +13,5 @@ project ("date_test")
 
 # Include sub-projects.
 add_subdirectory ("date_test")
+
+add_subdirectory("date")

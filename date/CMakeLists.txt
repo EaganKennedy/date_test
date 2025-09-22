@@ -1,8 +1,3 @@
-﻿# CMakeList.txt : CMake project for date_test, include source and define
-# project specific logic here.
-#
+﻿add_library(date STATIC "date.cpp" "date.hpp")
 
-# Add source to this project's executable.
-add_executable (date_test  )
-
-# TODO: Add tests and install targets if needed.
+target_include_directories(date PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
