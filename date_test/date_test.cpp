@@ -118,5 +118,5 @@ TEST(Advance, Separator) {
 
 
 TEST(Now, WorkingStatic) {
-	// Static works
+	Date today = Date::now();
 }
