@@ -12,11 +12,16 @@ namespace util {
 
 	}
 
-	Date::Date(int d, int m, int y) {	
-		//oTime = *localtime(&cTime); Also throws exceptions
+	Date::Date(int d, int m, int y) {
+		//oTime = *localtime(&cTime); //Also throws the same exception
+
 		year(y);
 		month(m);
 		day(d);
+
+		oTime.tm_sec = 0;
+		oTime.tm_min = 0;
+		oTime.tm_hour = 0;
 
 		normalizeCTime();
 	}
@@ -29,8 +34,10 @@ namespace util {
 
 		tm newDay = oTime;
 		newDay.tm_mday = d;
+		mktime(&newDay);
+		mktime(&oTime);
 
-		if (mktime(&newDay) != mktime(&oTime)) {
+		if (newDay.tm_mon != oTime.tm_mon) {
 			throw Invalid{ d, month(), year() };
 		}
 
@@ -80,7 +87,7 @@ namespace util {
 	}
 
 	void Date::advance(int move) {
-
+		
 	}
 
 	void Date::print(std::ostream& out) {
@@ -94,7 +101,6 @@ namespace util {
 	}
 
 	 void Date::normalizeCTime() {
-		 oTime.tm_isdst = -1;
 		 cTime = mktime(&oTime);
 	 }
 

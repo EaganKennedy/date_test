@@ -23,7 +23,7 @@ TEST(Setters, Setting) {
 	ASSERT_THROW(d.day(32), Date::Invalid);
 
 	d.month(11);
-	ASSERT_NO_THROW(d.day(31));
+	ASSERT_NO_THROW(d.day(30));
 
 	ASSERT_NO_THROW(d.year(2000));
 }

@@ -48,6 +48,7 @@ namespace util {
 		time_t cTime = time(nullptr);
 		tm oTime;
 
-		//tm oTime = *localtime(&cTime); Throws exceptions every time for some reason
+		//tm oTime = *localtime(&cTime); //Throws exceptions every time for some reason
+		//unknown file: error: Unknown C++ exception thrown in the test body.
 	};
 }
