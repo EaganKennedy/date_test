@@ -8,7 +8,7 @@
 using namespace util;
 
 TEST(DefaultCtor, InitAndBaseGetter) {
-	Date d;
+	Date d(1, 1, 1970);
 	ASSERT_EQ(d.month(), 1);
 	ASSERT_EQ(d.day(), 1);
 	ASSERT_EQ(d.year(), 1970);
