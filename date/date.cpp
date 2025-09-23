@@ -8,7 +8,7 @@
 using std::string;
 
 namespace util {
-	Date::Date(){
+	Date::Date() {
 		year(1970);
 		month(1);
 		day(1);
@@ -81,11 +81,12 @@ namespace util {
 	string Date::dayName() {
 		const std::vector<string> weekdays =
 		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
 		return weekdays.at(oTime.tm_wday);
 	}
 
 	string Date::monthName() {
-		const std::vector<string> months = 
+		const std::vector<string> months =
 		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
 		return months.at(oTime.tm_mon);
@@ -111,19 +112,19 @@ namespace util {
 		normalizeCTime();
 	}
 
-	 Date Date::now() {
-		 Date d;
-		 time_t curSeconds = time(nullptr);
-		 tm curTime = *localtime(&curSeconds);
-		 d.year(curTime.tm_year + 1900);
-		 d.month(curTime.tm_mon + 1);
-		 d.day(curTime.tm_mday);
-		 return d;
+	Date Date::now() {
+		Date d;
+		time_t curSeconds = time(nullptr);
+		tm curTime = *localtime(&curSeconds);
+		d.year(curTime.tm_year + 1900);
+		d.month(curTime.tm_mon + 1);
+		d.day(curTime.tm_mday);
+		return d;
 	}
 
-	 void Date::normalizeCTime() {
-		 cTime = mktime(&oTime);
-	 }
+	void Date::normalizeCTime() {
+		cTime = mktime(&oTime);
+	}
 
 	Date::Order Date::order = Date::Order::MonthDayYear;
 	string Date::separator = "/";
