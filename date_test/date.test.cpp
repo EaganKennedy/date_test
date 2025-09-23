@@ -47,7 +47,7 @@ TEST(ValueCtor, InitWorks) {
 }
 
 TEST(Props, CorrectMonthRead) {
-	Date d(1,2,1970);
+	Date d(1, 2, 1970);
 	ASSERT_EQ(d.monthName(), "February");
 
 	d.month(8);
@@ -70,7 +70,7 @@ TEST(Props, CorrectDayRead) {
 
 TEST(Print, AccuratePrint) {
 	std::ostringstream sout;
-	Date d(25,10,2025);
+	Date d(25, 10, 2025);
 
 	d.print(sout);
 
@@ -85,13 +85,13 @@ TEST(Advance, BasicAdvance) {
 
 	d.advance(5);
 	ASSERT_EQ(d.day(), 7);
-	
+
 	d.advance(-6);
 	ASSERT_EQ(d.day(), 1);
 }
 
 TEST(Advance, DateOrder) {
-	Date d(5,2,1970);
+	Date d(5, 2, 1970);
 	std::ostringstream sout;
 	Date::order = Date::Order::MonthDayYear;
 
@@ -111,7 +111,7 @@ TEST(Advance, DateOrder) {
 }
 
 TEST(Advance, Separator) {
-	Date d(10,5,1970);
+	Date d(10, 5, 1970);
 	std::ostringstream sout;
 	Date::order = Date::Order::MonthDayYear;
 
@@ -140,7 +140,7 @@ TEST(Now, WorkingStatic) {
 
 	testCase += std::to_string(testToday.tm_mon + 1);
 	testCase += Date::separator;
-	
+
 	testCase += std::to_string(testToday.tm_mday);
 	testCase += Date::separator;
 
