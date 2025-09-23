@@ -86,11 +86,22 @@ namespace util {
 		return months.at(oTime.tm_mon);
 	}
 
-	void Date::advance(int move) {
-		
+	void Date::print(std::ostream& out) {
+		switch (Date::order) {
+		case Order::MonthDayYear:
+			out << month() << Date::separator << day() << Date::separator << year();
+			break;
+		case Order::DayMonthYear:
+			out << day() << Date::separator << month() << Date::separator << year();
+			break;
+		case Order::YearMonthDay:
+			out << year() << Date::separator << month() << Date::separator << day();
+			break;
+		}
 	}
 
-	void Date::print(std::ostream& out) {
+
+	void Date::advance(int move) {
 
 	}
 
