@@ -107,8 +107,12 @@ namespace util {
 	}
 
 	 Date Date::now() {
-		 //temp
 		 Date d;
+		 time_t curSeconds = time(nullptr);
+		 tm curTime = *localtime(&curSeconds);
+		 d.year(curTime.tm_year + 1900);
+		 d.month(curTime.tm_mon + 1);
+		 d.day(curTime.tm_mday);
 		 return d;
 	}
 

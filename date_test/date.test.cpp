@@ -110,18 +110,21 @@ TEST(Advance, DateOrder) {
 	sout.str("");
 }
 
-TEST(Advance, Separator) {
-	Date d(5,2,1970);
+TEST(Advance, SeparatorNo1) {
+	Date d(10,5,1970);
 	std::ostringstream sout;
+	Date::order = Date::Order::MonthDayYear;
 
 	Date::separator = "+";
 
 	d.print(sout);
-	ASSERT_EQ(sout.str(), "2+5+1970");
+	ASSERT_EQ(sout.str(), "5+10+1970");
+	sout.str("");
 
-	Date d2(2, 5, 1970);
-	d.print(sout);
-	ASSERT_EQ(sout.str(), "5+2+1970");
+	Date d2(2, 11, 1970);
+	d2.print(sout);
+	ASSERT_EQ(sout.str(), "11+2+1970");
+	sout.str("");
 }
 
 TEST(Now, WorkingStatic) {
