@@ -11,9 +11,9 @@ namespace util {
 	}
 
 	Date::Date(int d, int m, int y) {		
-		oTime.tm_year = y - 1900;
-		oTime.tm_mon = m - 1;
-		oTime.tm_mday = d;
+		year(y);
+		month(m);
+		day(d);
 
 		normalizeCTime();
 	}
@@ -37,6 +37,8 @@ namespace util {
 
 			throw Invalid{ d, month(), year() };
 		}
+
+		normalizeCTime();
 	}
 
 	int Date::day() {
@@ -57,6 +59,8 @@ namespace util {
 
 	void Date::year(int y) {
 		oTime.tm_year = y - 1900;
+
+		normalizeCTime();
 	}
 
 	int Date::year() {
