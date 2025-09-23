@@ -93,17 +93,21 @@ TEST(Advance, BasicAdvance) {
 TEST(Advance, DateOrder) {
 	Date d(5,2,1970);
 	std::ostringstream sout;
+	Date::order = Date::Order::MonthDayYear;
 
 	d.print(sout);
 	ASSERT_EQ(sout.str(), "2/5/1970");
+	sout.str("");
 
 	Date::order = Date::Order::DayMonthYear;
 	d.print(sout);
 	ASSERT_EQ(sout.str(), "5/2/1970");
+	sout.str("");
 
 	Date::order = Date::Order::YearMonthDay;
 	d.print(sout);
 	ASSERT_EQ(sout.str(), "1970/2/5");
+	sout.str("");
 }
 
 TEST(Advance, Separator) {

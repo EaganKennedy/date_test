@@ -102,7 +102,8 @@ namespace util {
 
 
 	void Date::advance(int move) {
-
+		oTime.tm_mday += move;
+		normalizeCTime();
 	}
 
 	 Date Date::now() {
