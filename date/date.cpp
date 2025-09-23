@@ -12,7 +12,8 @@ namespace util {
 
 	}
 
-	Date::Date(int d, int m, int y) {		
+	Date::Date(int d, int m, int y) {	
+		//oTime = *localtime(&cTime); Also throws exceptions
 		year(y);
 		month(m);
 		day(d);
@@ -95,9 +96,6 @@ namespace util {
 	 void Date::normalizeCTime() {
 		 oTime.tm_isdst = -1;
 		 cTime = mktime(&oTime);
-		 if (mktime(&oTime) == -1) {
-			 std::cout << "oof";
-		 }
 	 }
 
 	Date::Order Date::order = Date::Order::MonthDayYear;

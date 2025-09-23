@@ -17,7 +17,7 @@ namespace util {
 			YearMonthDay
 		};
 
-		Date(); // set date to 1/1/1970 MM/DD/YY
+		Date();
 		Date(int d, int m, int y);
 
 		void day(int d);
@@ -45,7 +45,9 @@ namespace util {
 
 		void normalizeCTime();
 
-		time_t cTime = 0;
+		time_t cTime = time(nullptr);
 		tm oTime;
+
+		//tm oTime = *localtime(&cTime); Throws exceptions every time for some reason
 	};
 }
