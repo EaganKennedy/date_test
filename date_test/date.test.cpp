@@ -110,7 +110,7 @@ TEST(Advance, DateOrder) {
 	sout.str("");
 }
 
-TEST(Advance, SeparatorNo1) {
+TEST(Advance, Separator) {
 	Date d(10,5,1970);
 	std::ostringstream sout;
 	Date::order = Date::Order::MonthDayYear;
