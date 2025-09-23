@@ -8,13 +8,19 @@
 using std::string;
 
 namespace util {
-	Date::Date() : Date(1,1,1970){
+	Date::Date(){
+		year(1970);
+		month(1);
+		day(1);
 
+		oTime.tm_sec = 0;
+		oTime.tm_min = 0;
+		oTime.tm_hour = 0;
+
+		normalizeCTime();
 	}
 
 	Date::Date(int d, int m, int y) {
-		//oTime = *localtime(&cTime); //Also throws the same exception
-
 		year(y);
 		month(m);
 		day(d);
