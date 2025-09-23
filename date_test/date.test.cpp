@@ -22,6 +22,9 @@ TEST(Setters, Setting) {
 	ASSERT_NO_THROW(d.day(25));
 	ASSERT_THROW(d.day(32), Date::Invalid);
 
+	d.month(11);
+	ASSERT_NO_THROW(d.day(31));
+
 	ASSERT_NO_THROW(d.year(2000));
 }
 
@@ -39,6 +42,8 @@ TEST(ValueCtor, InitWorks) {
 	ASSERT_EQ(d.month(), 2);
 	ASSERT_EQ(d.day(), 2);
 	ASSERT_EQ(d.year(), 1971);
+
+	ASSERT_THROW(Date d(1, 40, 1970), Date::Invalid);
 }
 
 TEST(Props, CorrectMonthRead) {

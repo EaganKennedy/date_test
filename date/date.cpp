@@ -15,32 +15,52 @@ namespace util {
 		oTime.tm_mon = m - 1;
 		oTime.tm_mday = d;
 
-		cTime = mktime(&oTime);
+		normalizeCTime();
 	}
 
 
 	void Date::day(int d) {
+		if (d < 1 || d > 31) {
+			throw Invalid{ d, month(), year() };
+		}
 
+		int orinM = oTime.tm_mon;
+		int orinD = oTime.tm_mday;
+
+		oTime.tm_mday = d;
+		mktime(&oTime);
+
+		if (oTime.tm_mon != orinM) {
+			oTime.tm_mon = orinM;
+			oTime.tm_mday = orinD;
+			mktime(&oTime);
+
+			throw Invalid{ d, month(), year() };
+		}
 	}
 
 	int Date::day() {
-		return 1;
+		return oTime.tm_mday;
 	}
 
 	void Date::month(int m) {
-
+		if (m < 1 || m > 12) {
+			throw Invalid{ (day(), m, year()) };
+		}
+		oTime.tm_mon = m - 1;
+		normalizeCTime();
 	}
 
 	int Date::month() {
-		return 1;
+		return oTime.tm_mon + 1;
 	}
 
 	void Date::year(int y) {
-
+		oTime.tm_year = y - 1900;
 	}
 
 	int Date::year() {
-		return 1;
+		return oTime.tm_year + 1900;
 	}
 
 	string Date::dayName() {
@@ -64,6 +84,10 @@ namespace util {
 		 Date d;
 		 return d;
 	}
+
+	 void Date::normalizeCTime() {
+		 cTime = mktime(&oTime);
+	 }
 
 	Date::Order Date::order = Date::Order::MonthDayYear;
 	string Date::separator = "/";

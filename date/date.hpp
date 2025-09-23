@@ -43,6 +43,8 @@ namespace util {
 
 	private:
 
+		void normalizeCTime();
+
 		time_t cTime = 0;
 		tm oTime;
 	};
