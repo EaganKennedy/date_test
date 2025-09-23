@@ -1,5 +1,6 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include "date.hpp"
+#include <vector>
 #include <ctime>
 #include <sstream>
 
@@ -68,11 +69,17 @@ namespace util {
 	}
 
 	string Date::dayName() {
-		return "";
+		const std::vector<string> weekdays = 
+		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+		return weekdays.at(oTime.tm_wday);
 	}
 
 	string Date::monthName() {
-		return "";
+		const std::vector<string> months = 
+		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+		
+		return months.at(oTime.tm_wday);
 	}
 
 	void Date::advance(int move) {
