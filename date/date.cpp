@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <sstream>
+#include <iostream>
 
 using std::string;
 
@@ -25,19 +26,14 @@ namespace util {
 			throw Invalid{ d, month(), year() };
 		}
 
-		int orinM = oTime.tm_mon;
-		int orinD = oTime.tm_mday;
+		tm newDay = oTime;
+		newDay.tm_mday = d;
 
-		oTime.tm_mday = d;
-		mktime(&oTime);
-
-		if (oTime.tm_mon != orinM) {
-			oTime.tm_mon = orinM;
-			oTime.tm_mday = orinD;
-			mktime(&oTime);
-
+		if (mktime(&newDay) != mktime(&oTime)) {
 			throw Invalid{ d, month(), year() };
 		}
+
+		oTime.tm_mday = d;
 
 		normalizeCTime();
 	}
@@ -78,8 +74,8 @@ namespace util {
 	string Date::monthName() {
 		const std::vector<string> months = 
 		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-		
-		return months.at(oTime.tm_wday);
+
+		return months.at(oTime.tm_mon);
 	}
 
 	void Date::advance(int move) {
@@ -97,7 +93,11 @@ namespace util {
 	}
 
 	 void Date::normalizeCTime() {
+		 oTime.tm_isdst = -1;
 		 cTime = mktime(&oTime);
+		 if (mktime(&oTime) == -1) {
+			 std::cout << "oof";
+		 }
 	 }
 
 	Date::Order Date::order = Date::Order::MonthDayYear;

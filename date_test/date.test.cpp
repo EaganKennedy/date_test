@@ -62,10 +62,10 @@ TEST(Props, CorrectDayRead) {
 	ASSERT_EQ(d.dayName(), "Sunday");
 
 	Date d2(24, 9, 2025);
-	ASSERT_EQ(d.dayName(), "Wednesday");
+	ASSERT_EQ(d2.dayName(), "Wednesday");
 
 	Date d3(26, 9, 2025);
-	ASSERT_EQ(d.dayName(), "Friday");
+	ASSERT_EQ(d3.dayName(), "Friday");
 }
 
 TEST(Print, AccuratePrint) {
