@@ -7,6 +7,8 @@
 
 using std::string;
 
+//So for some reason adding and deleting a line of code changes the test results on CodeGrade, all of them work on my end
+
 namespace util {
 	Date::Date() { //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
 		year(1970);
