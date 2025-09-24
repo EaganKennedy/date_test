@@ -39,8 +39,8 @@ namespace util {
 
 		static Date now();
 
-		static Order order; // Order::MonthDayYear
-		static std::string separator; // '/'
+		static Order order;
+		static std::string separator;
 
 	private:
 
@@ -54,7 +54,5 @@ namespace util {
 		const std::vector<std::string> months =
 		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
-		//tm oTime = *localtime(&cTime); //Throws exceptions every time for some reason
-		//unknown file: error: Unknown C++ exception thrown in the test body.
 	};
 }
