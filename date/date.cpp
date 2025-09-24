@@ -9,8 +9,8 @@ using std::string;
 
 //So for some reason adding and deleting a line of code changes the test results on CodeGrade, all of them work on my end
 
-namespace util {
-	Date::Date() { //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
+
+	util::Date::Date() { //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
 		year(1970);
 		month(1);
 		day(1);
@@ -23,7 +23,7 @@ namespace util {
 
 		normalizeCTime();
 	}
-	Date::Date(int d, int m, int y) {
+	util::Date::Date(int d, int m, int y) {
 		year(y);
 		month(m);
 		day(d);
@@ -37,7 +37,7 @@ namespace util {
 		normalizeCTime();
 	}
 
-	void Date::day(int d) {
+	void util::Date::day(int d) {
 		if (d < 1 || d > 31) {
 			throw Invalid{ d, month(), year() };
 		}
@@ -55,38 +55,38 @@ namespace util {
 
 		normalizeCTime();
 	}
-	int Date::day() const {
+	int util::Date::day() const {
 		return oTime.tm_mday;
 	}
 
-	void Date::month(int m) {
+	void util::Date::month(int m) {
 		if (m < 1 || m > 12) {
 			throw Invalid{ (day(), m, year()) };
 		}
 		oTime.tm_mon = m - 1;
 		normalizeCTime();
 	}
-	int Date::month() const {
+	int util::Date::month() const {
 		return oTime.tm_mon + 1;
 	}
 
-	void Date::year(int y) {
+	void util::Date::year(int y) {
 		oTime.tm_year = y - 1900;
 
 		normalizeCTime();
 	}
-	int Date::year() const {
+	int util::Date::year() const {
 		return oTime.tm_year + 1900;
 	}
 
-	string Date::dayName() const {
+	string util::Date::dayName() const {
 		return weekdays.at(oTime.tm_wday);
 	}
-	string Date::monthName() const {
+	string util::Date::monthName() const {
 		return months.at(oTime.tm_mon);
 	}
 
-	void Date::print(std::ostream& out) const {
+	void util::Date::print(std::ostream& out) const {
 		switch (Date::order) {
 		case Order::MonthDayYear:
 			out << month() << Date::separator << day() << Date::separator << year();
@@ -100,12 +100,12 @@ namespace util {
 		}
 	}
 
-	void Date::advance(int move) {
+	void util::Date::advance(int move) {
 		oTime.tm_mday += move;
 		normalizeCTime();
 	}
 
-	Date Date::now() {
+	util::Date util::Date::now() {
 		Date d;
 		time_t curSeconds = time(nullptr);
 		tm curTime = *localtime(&curSeconds);
@@ -115,10 +115,9 @@ namespace util {
 		return d;
 	}
 
-	void Date::normalizeCTime() {
+	void util::Date::normalizeCTime() {
 		cTime = mktime(&oTime);
 	}
 
-	Date::Order Date::order = Date::Order::MonthDayYear;
-	string Date::separator = "/";
-}
+	util::Date::Order util::Date::order = util::Date::Order::MonthDayYear;
+	string util::Date::separator = "/";
