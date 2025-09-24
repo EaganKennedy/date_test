@@ -81,7 +81,7 @@ namespace util {
 	string Date::dayName() {
 		const std::vector<string> weekdays =
 		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-		oTime.tm_wday -= 1;
+
 		return weekdays.at(oTime.tm_wday);
 	}
 
