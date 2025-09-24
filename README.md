@@ -23,7 +23,7 @@ It is a streamlined project that makes use of the gtest library for running the 
 
 ## Strengths
 
-Date functions as a wrapper for a tm struct from <ctime>, 
+Util::Date functions as a wrapper for a tm struct from <ctime>, 
 giving the user a better interface for using that library for calendar dates.
 
 ## Weaknesses
