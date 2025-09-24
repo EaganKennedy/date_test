@@ -54,7 +54,6 @@ namespace util {
 		normalizeCTime();
 	}
 	int Date::day() const {
-		std::cout << oTime.tm_mday << "d\n";
 		return oTime.tm_mday;
 	}
 
@@ -66,7 +65,6 @@ namespace util {
 		normalizeCTime();
 	}
 	int Date::month() const {
-		std::cout << oTime.tm_mon << "m\n";
 		return oTime.tm_mon + 1;
 	}
 
@@ -76,7 +74,6 @@ namespace util {
 		normalizeCTime();
 	}
 	int Date::year() const {
-		std::cout << oTime.tm_year << "y\n";
 		return oTime.tm_year + 1900;
 	}
 
