@@ -21,7 +21,6 @@ namespace util {
 
 		normalizeCTime();
 	}
-
 	Date::Date(int d, int m, int y) {
 		year(y);
 		month(m);
@@ -35,7 +34,6 @@ namespace util {
 
 		normalizeCTime();
 	}
-
 
 	void Date::day(int d) {
 		if (d < 1 || d > 31) {
@@ -55,7 +53,6 @@ namespace util {
 
 		normalizeCTime();
 	}
-
 	int Date::day() const {
 		return oTime.tm_mday;
 	}
@@ -67,7 +64,6 @@ namespace util {
 		oTime.tm_mon = m - 1;
 		normalizeCTime();
 	}
-
 	int Date::month() const {
 		return oTime.tm_mon + 1;
 	}
@@ -77,7 +73,6 @@ namespace util {
 
 		normalizeCTime();
 	}
-
 	int Date::year() const {
 		return oTime.tm_year + 1900;
 	}
@@ -85,7 +80,6 @@ namespace util {
 	string Date::dayName() const {
 		return weekdays.at(oTime.tm_wday);
 	}
-
 	string Date::monthName() const {
 		return months.at(oTime.tm_mon);
 	}
@@ -103,7 +97,6 @@ namespace util {
 			break;
 		}
 	}
-
 
 	void Date::advance(int move) {
 		oTime.tm_mday += move;
