@@ -9,7 +9,6 @@
 This project contains a Date class along with unit tests for its validation. 
 It is a streamlined project that makes use of the gtest library for running the tests.
 
-
 ## Git Repository
 
 [Repo](https://github.com/EaganKennedy/date_test)
