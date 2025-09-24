@@ -8,7 +8,7 @@
 using std::string;
 
 namespace util {
-	Date::Date() {
+	Date::Date() { //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
 		year(1970);
 		month(1);
 		day(1);
@@ -16,6 +16,8 @@ namespace util {
 		oTime.tm_sec = 0;
 		oTime.tm_min = 0;
 		oTime.tm_hour = 0;
+		oTime.tm_wday = 0;
+		oTime.tm_isdst = -1;
 
 		normalizeCTime();
 	}
@@ -28,6 +30,8 @@ namespace util {
 		oTime.tm_sec = 0;
 		oTime.tm_min = 0;
 		oTime.tm_hour = 0;
+		oTime.tm_wday = 0;
+		oTime.tm_isdst = -1;
 
 		normalizeCTime();
 	}
@@ -81,7 +85,7 @@ namespace util {
 	string Date::dayName() {
 		const std::vector<string> weekdays =
 		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-		oTime.tm_wday -= 1;
+
 		return weekdays.at(oTime.tm_wday);
 	}
 
