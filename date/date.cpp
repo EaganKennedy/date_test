@@ -8,6 +8,12 @@
 using std::string;
 
 //So for some reason adding and deleting a line of code changes the test results on CodeGrade, all of them work on my end
+//This is a change. Before this change is pushed, codegrade successfully runs my tests, Setting, InitWorks, CorrectMonthRead, AccuratePrint, BasicAdvance
+//DateOrder, Seperator, and WorkingStatic.
+
+//It fails InitAndBaseGetter, Getting, and CorrectDayRead.
+
+//All of these tests are run correctly on my end, I pass all of them. The same tests fail when CodeGrade runs them.
 
 namespace util {
 	Date::Date() { //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
