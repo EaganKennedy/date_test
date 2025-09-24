@@ -56,7 +56,7 @@ namespace util {
 		normalizeCTime();
 	}
 
-	int Date::day() {
+	int Date::day() const {
 		return oTime.tm_mday;
 	}
 
@@ -68,7 +68,7 @@ namespace util {
 		normalizeCTime();
 	}
 
-	int Date::month() {
+	int Date::month() const {
 		return oTime.tm_mon + 1;
 	}
 
@@ -78,25 +78,19 @@ namespace util {
 		normalizeCTime();
 	}
 
-	int Date::year() {
+	int Date::year() const {
 		return oTime.tm_year + 1900;
 	}
 
-	string Date::dayName() {
-		const std::vector<string> weekdays =
-		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-
+	string Date::dayName() const {
 		return weekdays.at(oTime.tm_wday);
 	}
 
-	string Date::monthName() {
-		const std::vector<string> months =
-		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-
+	string Date::monthName() const {
 		return months.at(oTime.tm_mon);
 	}
 
-	void Date::print(std::ostream& out) {
+	void Date::print(std::ostream& out) const {
 		switch (Date::order) {
 		case Order::MonthDayYear:
 			out << month() << Date::separator << day() << Date::separator << year();

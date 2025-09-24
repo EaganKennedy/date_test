@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <ctime>
 #include <string>
+#include <vector>
 
 namespace util {
 	class Date {
@@ -21,20 +22,20 @@ namespace util {
 		Date(int d, int m, int y);
 
 		void day(int d);
-		int day();
+		int day() const;
 
 		void month(int m);
-		int month();
+		int month() const;
 
 		void year(int y);
-		int year();
+		int year() const;
 
-		std::string dayName();
-		std::string monthName();
+		std::string dayName() const;
+		std::string monthName() const;
 
 		void advance(int move = 1);
 
-		void print(std::ostream&);
+		void print(std::ostream&) const;
 
 		static Date now();
 
@@ -47,6 +48,11 @@ namespace util {
 
 		time_t cTime = time(nullptr);
 		tm oTime;
+		const std::vector<std::string> weekdays =
+		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+		const std::vector<std::string> months =
+		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
 		//tm oTime = *localtime(&cTime); //Throws exceptions every time for some reason
 		//unknown file: error: Unknown C++ exception thrown in the test body.
