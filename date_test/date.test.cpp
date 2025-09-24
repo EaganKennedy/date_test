@@ -96,7 +96,7 @@ TEST(Advance, DateOrder) {
 	Date::order = Date::Order::MonthDayYear;
 
 	d.print(sout);
-	ASSERT_EQ(sout.str(), "2/5/104188899");
+	ASSERT_EQ(sout.str(), "2/5/1970");
 	sout.str("");
 
 	Date::order = Date::Order::DayMonthYear;
