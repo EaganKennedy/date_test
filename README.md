@@ -15,7 +15,7 @@ It is a streamlined project that makes use of the gtest library for running the 
 
 ## External Resources
 
-[Project Prompt](https://cs.harding.edu/gfoust/classes/comp3450/projects/date)
+[Project Prompt](https://cs.harding.edu/gfoust/classes/comp3450/projects/date) "\n"
 [Static Info](https://cs.harding.edu/gfoust/classes/comp3450/notes/static)
 [Unit Testing Info](https://cs.harding.edu/gfoust/classes/comp3450/notes/unittest/)
 [Exception Info](https://cs.harding.edu/gfoust/classes/comp3450/notes/exceptions)
