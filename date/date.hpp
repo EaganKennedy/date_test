@@ -42,17 +42,17 @@ namespace util {
 		static Order order;
 		static std::string separator;
 
+		static std::vector<std::string> weekdays;
+
+		static std::vector<std::string> months;
+
 	private:
 
 		void normalizeCTime();
 
+		void validate(tm newDate);
+
 		time_t cTime = time(nullptr);
-		tm oTime;
-		const std::vector<std::string> weekdays =
-		{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-
-		const std::vector<std::string> months =
-		{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-
+		tm oTime{};
 	};
 }

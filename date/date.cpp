@@ -8,35 +8,27 @@
 using std::string;
 
 namespace util {
-	Date::Date() : Date(1,1,1970){ //Code grade can not have a constructor forward to another constructor, or at least not when I attempted to
+	Date::Date() : Date(1,1,1970){
 	}
 	Date::Date(int d, int m, int y) {
-		year(y);
-		month(m);
-		day(d);
+		tm newDate{};
 
-		oTime.tm_sec = 0;
-		oTime.tm_min = 0;
-		oTime.tm_hour = 0;
-		oTime.tm_wday = 0;
-		oTime.tm_isdst = -1;
+		newDate.tm_mday = d;
+		newDate.tm_mon = m - 1;
+		newDate.tm_year = y - 1900;
+		newDate.tm_isdst = -1;
 
+		validate(newDate);
+
+		oTime = newDate;
 		normalizeCTime();
 	}
 
 	void Date::day(int d) {
-		if (d < 1 || d > 31) {
-			throw Invalid{ d, month(), year() };
-		}
+		tm newDate = oTime;
+		newDate.tm_mday = d;
 
-		tm newDay = oTime;
-		newDay.tm_mday = d;
-		mktime(&newDay);
-		mktime(&oTime);
-
-		if (newDay.tm_mon != oTime.tm_mon) {
-			throw Invalid{ d, month(), year() };
-		}
+		validate(newDate);
 
 		oTime.tm_mday = d;
 
@@ -47,9 +39,11 @@ namespace util {
 	}
 
 	void Date::month(int m) {
-		if (m < 1 || m > 12) {
-			throw Invalid{ (day(), m, year()) };
-		}
+		tm newDate = oTime;
+		newDate.tm_mon = m - 1;
+
+		validate(newDate);
+		
 		oTime.tm_mon = m - 1;
 		normalizeCTime();
 	}
@@ -58,6 +52,11 @@ namespace util {
 	}
 
 	void Date::year(int y) {
+		tm newDate = oTime;
+		newDate.tm_year = y - 1900;
+
+		validate(newDate);
+
 		oTime.tm_year = y - 1900;
 
 		normalizeCTime();
@@ -106,6 +105,27 @@ namespace util {
 		cTime = mktime(&oTime);
 	}
 
+	void Date::validate(tm newDate) {
+		int year = newDate.tm_year;
+		int month = newDate.tm_mon;
+		int day = newDate.tm_mday;
+
+		mktime(&newDate);
+
+		if (year != newDate.tm_year ||
+			month != newDate.tm_mon ||
+			day != newDate.tm_mday) {
+			throw Invalid{ day, month, year };
+		}
+	}
+
 	Date::Order Date::order = Date::Order::MonthDayYear;
 	string Date::separator = "/";
+
+	// These are const, that way the user can change the names of days if they want to output in a different language.
+	std::vector<string> util::Date::weekdays =
+	{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+	std::vector<std::string> util::Date::months =
+	{ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 }
