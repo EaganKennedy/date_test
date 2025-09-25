@@ -2,7 +2,7 @@
 
 ## Authors
 
-**Eagan Kennedy**_
+**Eagan Kennedy**
 
 ## Description
 
@@ -27,5 +27,4 @@ giving the user a better interface for using that library for calendar dates.
 
 ## Weaknesses
 
-This project is held together with hopes and dreams, I do not know why it has been failing certain CodeGrade tests,
-and weird problems were run into during development that required odd workarounds that probably were not good practice.
+I have managed to fix underlying mistakes, if there are any weaknesses I am not knowledgeable to know them
