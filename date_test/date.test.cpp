@@ -150,9 +150,3 @@ TEST(Now, WorkingStatic) {
 
 	ASSERT_EQ(sout.str(), testCase);
 }
-
-TEST(Full, Full) {
-	const Date d(25, 10, 2025);
-	std::ostringstream sout;
-
-}
