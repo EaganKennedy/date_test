@@ -27,4 +27,4 @@ giving the user a better interface for using that library for calendar dates.
 
 ## Weaknesses
 
-I have managed to fix underlying mistakes, if there are any weaknesses I am not knowledgeable to know them
+I have managed to fix underlying mistakes, if there are any weaknesses I am not knowledgeable enough to know them.

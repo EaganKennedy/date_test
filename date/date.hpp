@@ -43,7 +43,6 @@ namespace util {
 		static std::string separator;
 
 		static std::vector<std::string> weekdays;
-
 		static std::vector<std::string> months;
 
 	private:
@@ -52,7 +51,6 @@ namespace util {
 
 		void validate(tm newDate);
 
-		time_t cTime = time(nullptr);
 		tm oTime{};
 	};
 }

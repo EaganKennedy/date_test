@@ -101,7 +101,7 @@ namespace util {
 	}
 
 	void Date::normalizeCTime() {
-		cTime = mktime(&oTime);
+		mktime(&oTime);
 	}
 
 	void Date::validate(tm newDate) {
@@ -121,7 +121,7 @@ namespace util {
 	Date::Order Date::order = Date::Order::MonthDayYear;
 	string Date::separator = "/";
 
-	// These are const, that way the user can change the names of days if they want to output in a different language.
+	// These are non-const static, that way the user can change the names of days if they want to output in a different language.
 	std::vector<string> util::Date::weekdays =
 	{ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
